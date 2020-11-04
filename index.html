@@ -1,0 +1,33 @@
+<head>
+  <title>環保志工時數資料匯出</title>
+  <script src="lib/xlsx.min.js"></script>
+
+  <script src="js/excelToJson.js"></script>
+  <script src="js/templateFactory.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/index.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <section>
+    <h2>步驟一. 匯入 excel 檔</h2>
+    <input id="upload" type="file">
+  </section>
+
+  <section>
+    <h2>步驟二. 填入服務區間與總時數</h2>    
+    <button onclick="generate()">產生</button>
+    <div id="form">
+      <div class="rowHeader">
+        <div name="seqNum">編號</div>
+        <div name="username">姓名</div>
+        <div name="ssid">身分證字號</div>
+        <div name="startDate">服務日期起</div>
+        <div name="endDate">服務日期訖</div>
+        <div name="hour">總時數</div>
+      </div>
+    </div>
+  </section>
+</body>
