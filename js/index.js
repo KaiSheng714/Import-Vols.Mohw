@@ -10,10 +10,10 @@ function appendForm(records) {
 
   records.forEach((record, index) => {
     const seqNum = index + 1;
-    const htmlStr = factory.createFormTemplate(record, seqNum);
+    const htmlStr = factory.createRecordHtmlTemplate(record, seqNum);
     const div = document.createElement('div');
     div.innerHTML = htmlStr.trim();
-    append(div.firstChild);
+    document.querySelector("#form").append(div.firstChild);
   })
 }
 
@@ -25,17 +25,13 @@ function convertRowToRecord() {
       ssid: row.querySelector('[name="ssid"]').innerText,
       startDate: row.querySelector('input[name="startDate"]').value,
       endDate: row.querySelector('input[name="endDate"]').value,
-      hour: row.querySelector('input[name="hour"]').value,
+      totalHour: row.querySelector('input[name="totalHour"]').value,
     };
-    if (record.hour > 0) {
+    if (record.totalHour > 0) {
       result.push(record);
     }
   });
   return result;
-}
-
-function append(str) {
-  document.querySelector("#form").append(str);
 }
 
 function generate() {
@@ -44,11 +40,20 @@ function generate() {
   const result = [];
 
   records.forEach(record => {
-    result.push(core.divideRecordToPerMonth(record));
+    result.push(core.divideRecordByMonth(record));
   })
   console.log(result);
 }
 
-function clear() {
-  document.querySelector("#result").innerHTML = '';
+function editBatch(editor, key) {
+  document.querySelector('#form').querySelectorAll('input[name="' + key + '"]').forEach(input => {
+    input.value = editor.value;
+  });
+}
+
+function download() {
+  var file = new File(["Hello, world!"], "hello world.txt", {
+    type: "text/plain;charset=utf-8"
+  });
+  saveAs(file);
 }

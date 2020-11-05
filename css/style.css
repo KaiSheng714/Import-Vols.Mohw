@@ -21,11 +21,13 @@ body {
   margin: 4px 0;
 }
 
-.rowDiv:hover {
+#form > .rowDiv:hover {
   background-color: yellowgreen;
 }
 
-#form > div > div {
+
+#form > div > div,
+#editBatch > div {
   display: inline-block;
   padding: 4px;
   line-height: 32px;

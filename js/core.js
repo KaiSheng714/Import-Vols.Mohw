@@ -1,21 +1,19 @@
 class Core {
   constructor() {
-    this.divideRecordToPerMonth = (record) => {
-      const monthCount = this.countMonth(record.startDate, record.endDate);
-      const hours = this.divideHour(monthCount, record.hour);
-      const dateAndHour = this.calculateHourPerMonth(record.startDate, hours);
-      const result = [];
 
-      dateAndHour.forEach(data => {
-        result.push({
+    this.divideRecordByMonth = (record) => {
+      const monthCount = this.countMonth(record.startDate, record.endDate);
+      const hours = this.divideHour(record.totalHour, monthCount);
+      const monthData = this.assignHourToMonth(hours, record.startDate);
+      const records = [];
+
+      monthData.forEach(data => {
+        records.push(Object.assign({
           username: record.username,
-          ssid: record.ssid,
-          startDate: data.startDate.replaceAll('/', ''),
-          endDate: data.endDate.replaceAll('/', ''),
-          hour: data.hour + '',
-        });
+          ssid: record.ssid
+        }, data));
       });
-      return result;
+      return records;
     };
 
     this.countMonth = (startDate, endDate) => {
@@ -33,44 +31,40 @@ class Core {
         (12 * (endDate.getFullYear() - startDate.getFullYear())) + 1;
     }
 
-    this.divideHour = (monthCount, totalHour) => {
-      const result = [];
+    this.divideHour = (totalHour, monthCount) => {
+      const hours = [];
       const hourPerMonth = Math.ceil(totalHour / monthCount);
-      for (let i = 0; i < monthCount; ++i) {
-        let hour = hourPerMonth;
-        if (totalHour < hourPerMonth) {
-          hour = totalHour;
+
+      for (let remain = totalHour; remain > 0; remain -= hourPerMonth) {
+        if (remain < hourPerMonth) {
+          hours.push(remain);
+        } else {
+          hours.push(hourPerMonth);
         }
-        if (totalHour <= 0) {
-          break;
-        }
-        result.push(hour);
-        totalHour -= hourPerMonth;
       }
-      return result;
+      return hours;
     }
 
-    this.calculateHourPerMonth = (startDateStr, hours) => {
-      const result = [];
+    this.assignHourToMonth = (hours, startDateStr) => {
+      const monthDatas = [];
 
       hours.forEach((hour, index) => {
         const date = new Date(startDateStr);
         const startDate = new Date(date.getFullYear(), date.getMonth() + index, 1);
         const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
-        const monthAndHour = {
+        monthDatas.push({
           startDate: this.formatDate(startDate),
           endDate: this.formatDate(endDate),
           hour,
-        };
-        result.push(monthAndHour);
+        });
       });
-      return result;
+      return monthDatas;
     }
 
     this.formatDate = (date) => {
       const monthStr = ('0' + (date.getMonth() + 1)).slice(-2);
       const dateStr = ('0' + date.getDate()).slice(-2);
-      return date.getFullYear() + '/' + monthStr + '/' + dateStr;
+      return date.getFullYear() + monthStr + dateStr;
     }
   }
 }
