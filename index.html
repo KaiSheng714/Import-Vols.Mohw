@@ -1,8 +1,7 @@
 <head>
   <title>環保志工時數資料匯出</title>
-  <script src="lib/xlsx.min.js"></script>
-  <script src="lib/FileSaver.js"></script>
-  <script src="js/excelToJson.js"></script>
+  <script src="lib/xlsx.full.min.js"></script>
+  <script src="js/ExcelUtil.js"></script>
   <script src="js/templateFactory.js"></script>
   <script src="js/core.js"></script>
   <script src="js/index.js"></script>
@@ -32,9 +31,5 @@
       <div>服務日期訖 <input onkeyup="editBatch(this, 'endDate')" /></div>
       <div>總時數 <input onkeyup="editBatch(this, 'totalHour')"></div>
     </div>
-  </section>
-  <section>
-    <h2>步驟三. 下載志工時數 Excel 檔</h2>
-    <button onclick="download()">下載</button>
   </section>
 </body>

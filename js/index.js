@@ -1,6 +1,6 @@
 window.onload = (e) => {
   document.querySelector('#upload').addEventListener('change', (e) => {
-    new ExcelToJson().parseExcel(e.target.files[0])
+    new ExcelUtil().parseExcel(e.target.files[0])
       .then(appendForm);
   }, false);
 }
@@ -40,20 +40,14 @@ function generate() {
   const result = [];
 
   records.forEach(record => {
-    result.push(core.divideRecordByMonth(record));
+    result.push(...core.divideRecordByMonth(record));
   })
-  console.log(result);
+
+  new ExcelUtil().jsonToExcel(result);
 }
 
 function editBatch(editor, key) {
   document.querySelector('#form').querySelectorAll('input[name="' + key + '"]').forEach(input => {
     input.value = editor.value;
   });
-}
-
-function download() {
-  var file = new File(["Hello, world!"], "hello world.txt", {
-    type: "text/plain;charset=utf-8"
-  });
-  saveAs(file);
 }

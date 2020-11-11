@@ -48,6 +48,14 @@ class TemplateFactory {
         oversea: '國外參與服務人次',
         domestic: '國內參與服務人次'
       }
+
+      // return {
+      //   username: '姓名',
+      //   ssid: '身分證字號',
+      //   startDate: '服務日期起',
+      //   endDate: '服務日期訖',
+      //   hour: '服務時數-小時',
+      // }
     }
 
     this.createRecordHtmlTemplate = (record, seqNum) => {

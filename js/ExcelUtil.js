@@ -1,4 +1,4 @@
-class ExcelToJson {
+class ExcelUtil {
   constructor() {
     this.parseExcel = (file) => {
       return new Promise((resolve, reject) => {
@@ -33,6 +33,21 @@ class ExcelToJson {
         });
       });
       return result;
+    }
+
+    this.jsonToExcel = (json) => {
+      const sheetHeader = new TemplateFactory().getExcelHeader();
+      json.unshift(sheetHeader);
+
+      const workbook = XLSX.utils.book_new();
+      const worksheet = XLSX.utils.json_to_sheet(json, {
+        header: Object.keys(sheetHeader),
+        skipHeader: true
+      })
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+      XLSX.writeFile(workbook, 'sheet.xls', {
+        bookType: 'biff8'
+      });
     }
   };
 }
