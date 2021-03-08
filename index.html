@@ -1,9 +1,8 @@
 <head>
   <title>環保志工時數資料匯出</title>
   <script src="lib/xlsx.full.min.js"></script>
-  <script src="js/ExcelUtil.js"></script>
-  <script src="js/templateFactory.js"></script>
-  <script src="js/core.js"></script>
+  <script src="js/excelUtil.js"></script>
+  <script src="js/divider.js"></script>
   <script src="js/index.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -27,8 +26,9 @@
       </div>
     </div>
     <div id="editBatch">
-      <div>服務日期起<input onkeyup="editBatch(this, 'startDate')"/></div>
-      <div>服務日期訖 <input onkeyup="editBatch(this, 'endDate')" /></div>
+      <h3>批次調整</h3>
+      <div>服務日期起<input placeholder="(民國年) 0YYY-MM-DD" onkeyup="editBatch(this, 'startDate')"/></div>
+      <div>服務日期訖 <input placeholder="(民國年) 0YYY-MM-DD" onkeyup="editBatch(this, 'endDate')" /></div>
       <div>總時數 <input onkeyup="editBatch(this, 'totalHour')"></div>
     </div>
   </section>

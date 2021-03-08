@@ -1,19 +1,10 @@
-class Core {
+class Divider {
   constructor() {
 
     this.divideRecordByMonth = (record) => {
       const monthCount = this.countMonth(record.startDate, record.endDate);
-      const hours = this.divideHour(record.totalHour, monthCount);
-      const monthData = this.assignHourToMonth(hours, record.startDate);
-      const records = [];
-
-      monthData.forEach(data => {
-        records.push(Object.assign({
-          username: record.username,
-          ssid: record.ssid
-        }, data));
-      });
-      return records;
+      const hourArray = this.divideHour(record.totalHour, monthCount);
+      return this.assignHourToMonth(hourArray, record.startDate);
     };
 
     this.countMonth = (startDate, endDate) => {
@@ -45,26 +36,35 @@ class Core {
       return hours;
     }
 
-    this.assignHourToMonth = (hours, startDateStr) => {
-      const monthDatas = [];
+    this.assignHourToMonth = (hourArray, startDateStr) => {
+      const monthDataArray = [];
 
-      hours.forEach((hour, index) => {
-        const date = new Date(startDateStr);
-        const startDate = new Date(date.getFullYear(), date.getMonth() + index, 1);
-        const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
-        monthDatas.push({
-          startDate: this.formatDate(startDate),
-          endDate: this.formatDate(endDate),
+      hourArray.forEach((hour, index) => {
+        const startAndEnd = this.getStartAndEndOfMonth(startDateStr, index)
+        monthDataArray.push({
+          startDate: startAndEnd.start,
+          endDate: startAndEnd.end,
           hour,
         });
       });
-      return monthDatas;
+      return monthDataArray;
+    }
+
+    this.getStartAndEndOfMonth = (startDateStr, index) => {
+      const date = new Date(startDateStr);
+      const start = new Date(date.getFullYear() + 1911, date.getMonth() + index, 1);
+      const end = new Date(start.getFullYear(), start.getMonth() + 1, 0);
+
+      return {
+        start: this.formatDate(start),
+        end: this.formatDate(end),
+      }
     }
 
     this.formatDate = (date) => {
       const monthStr = ('0' + (date.getMonth() + 1)).slice(-2);
       const dateStr = ('0' + date.getDate()).slice(-2);
-      return date.getFullYear() + monthStr + dateStr;
+      return date.getFullYear() - 1911 + monthStr + dateStr;
     }
   }
 }
