@@ -1,0 +1,35 @@
+<head>
+  <title>環保志工時數資料匯出</title>
+  <script src="lib/xlsx.full.min.js"></script>
+  <script src="js/excelUtil.js"></script>
+  <script src="js/divider.js"></script>
+  <script src="js/index.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <section>
+    <h2>步驟一. 匯入志工資料 Excel 檔</h2>
+    <input id="upload" type="file">
+  </section>
+  <section>
+    <h2>步驟二. 填入服務區間與總時數</h2>
+    <button onclick="generate()">產生</button>
+    <div id="form">
+      <div class="rowHeader">
+        <div name="seqNum">編號</div>
+        <div name="username">姓名</div>
+        <div name="ssid">身分證字號</div>
+        <div name="startDate">服務日期起</div>
+        <div name="endDate">服務日期訖</div>
+        <div name="totalHour">總時數</div>
+      </div>
+    </div>
+    <div id="editBatch">
+      <h3>批次調整</h3>
+      <div>服務日期起<input placeholder="(民國年) 0YYY-MM-DD" onkeyup="editBatch(this, 'startDate')"/></div>
+      <div>服務日期訖 <input placeholder="(民國年) 0YYY-MM-DD" onkeyup="editBatch(this, 'endDate')" /></div>
+      <div>總時數 <input onkeyup="editBatch(this, 'totalHour')"></div>
+    </div>
+  </section>
+</body>
