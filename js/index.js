@@ -6,7 +6,9 @@ window.onload = (e) => {
 }
 
 function appendForm(records) {
-  records.forEach((record, index) => {
+  records.sort((a, b) => {
+    return a.username.localeCompare(b.username)
+  }).forEach((record, index) => {
     const seqNum = index + 1;
     const htmlStr = createRecordHtmlTemplate(record, seqNum);
     const div = document.createElement('div');
@@ -53,21 +55,21 @@ function editBatch(editor, key) {
 }
 
 function getRecordCommon(username, ssid) {
-  return  {
-     username,
-     ssid,
-     minute: 0,
-     peopleNum: 100,
-     action: 'A',
-     serviceName: '0340',
-     serviceContent: '0017',
-     fare: 0,
-     mealFee: 0,
-     area: 'B',
-     oversea: 0,
-     domestic: 0,
-   }
- }
+  return {
+    username,
+    ssid,
+    minute: 0,
+    peopleNum: 100,
+    action: 'A',
+    serviceName: '0340',
+    serviceContent: '0017',
+    fare: 0,
+    mealFee: 0,
+    area: 'B',
+    oversea: 0,
+    domestic: 0,
+  }
+}
 
 function createRecordHtmlTemplate(record, seqNum) {
   let str =
