@@ -9,9 +9,10 @@ section {
   margin-bottom: 48px;
 }
 
-#form {
+#form,
+#editBatch {
   width: 90%;
-  margin: 0 auto;
+  margin: 36px auto;
 }
 
 .rowHeader {
