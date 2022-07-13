@@ -5,6 +5,10 @@ body {
   font-family: 'Microsoft JhengHei';
 }
 
+section {
+  margin-bottom: 48px;
+}
+
 #form {
   width: 90%;
   margin: 0 auto;
@@ -12,12 +16,15 @@ body {
 
 .rowHeader {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 24px !important;
+  background-color: rgb(192, 192, 192) !important;
 }
 
 #form > div {
   text-align: center;
   background-color: antiquewhite;
+  padding: 4px;
+  font-size: 18px;
   margin: 4px 0;
 }
 
@@ -57,4 +64,18 @@ body {
 
 #form > div >  div:nth-child(6) {
   width: 8%;
+}
+
+#generatorDiv {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+#generatorDiv > button {
+  color: #ffffff;
+  background-color: #2d63c8;
+  border: 1px solid #2d63c8;
+  padding: 8px 32px;
+  cursor: pointer
 }

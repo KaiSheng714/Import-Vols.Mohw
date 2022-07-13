@@ -12,9 +12,9 @@
     <h2>步驟一. 匯入志工資料 Excel 檔</h2>
     <input id="upload" type="file">
   </section>
+  <hr>
   <section>
     <h2>步驟二. 填入服務區間與總時數</h2>
-    <button onclick="generate()">產生</button>
     <div id="form">
       <div class="rowHeader">
         <div name="seqNum">編號</div>
@@ -25,6 +25,10 @@
         <div name="totalHour">總時數</div>
       </div>
     </div>
+    <div id="generatorDiv">
+      <button onclick="generate()">產生</button>
+    </div>
+    <hr>
     <div id="editBatch">
       <h3>批次調整</h3>
       <div>服務日期起<input placeholder="(民國年) 0YYY-MM-DD" onkeyup="editBatch(this, 'startDate')"/></div>

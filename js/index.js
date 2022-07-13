@@ -77,12 +77,20 @@ function createRecordHtmlTemplate(record, seqNum) {
       <div name="seqNum">{0}</div>\
       <div name="username">{1}</div>\
       <div name="ssid">{2}</div>\
-      <div><input name="startDate" type="date" value="0109-01-01"/></div>\
-      <div><input name="endDate" type="date" value="0109-12-31" /></div>\
-      <div><input name="totalHour" /></div>\
+      <div><input name="startDate" type="date" value="0111-07-01"/></div>\
+      <div><input name="endDate" type="date" value="0111-12-31" /></div>\
+      <div><input name="totalHour" type="text" pattern="\d*" maxlength="2" onblur="hideIfFilled(this)"/></div>\
     </div>';
 
   return str.replace('{0}', seqNum)
     .replace('{1}', record.username)
     .replace('{2}', record.ssid);
+}
+
+function hideIfFilled(inputElement) {
+  if (inputElement.value && !isNaN(inputElement.value)) {
+    inputElement.parentElement.parentElement.style.opacity = "0.3"
+  } else {
+    inputElement.parentElement.parentElement.style.opacity = "1"
+  }
 }
