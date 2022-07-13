@@ -25,15 +25,18 @@
         <div name="totalHour">總時數</div>
       </div>
     </div>
-    <div id="generatorDiv">
-      <button onclick="generate()">產生</button>
-    </div>
-    <hr>
     <div id="editBatch">
       <h3>批次調整</h3>
       <div>服務日期起<input placeholder="(民國年) 0YYY-MM-DD" onkeyup="editBatch(this, 'startDate')"/></div>
       <div>服務日期訖 <input placeholder="(民國年) 0YYY-MM-DD" onkeyup="editBatch(this, 'endDate')" /></div>
-      <div>總時數 <input onkeyup="editBatch(this, 'totalHour')"></div>
+      <div>總時數 <input pattern="\d*" maxlength="2" onkeyup="editBatch(this, 'totalHour')"></div>
+    </div>
+  </section>
+  <hr>
+  <section>
+    <h2>步驟三. 匯出 Excel</h2>
+    <div id="generatorDiv">
+      <button onclick="generate()">匯出 Excel</button>
     </div>
   </section>
 </body>

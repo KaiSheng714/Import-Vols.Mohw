@@ -39,15 +39,26 @@ section {
   line-height: 32px;
 }
 
-#form > div > div > input {
+#form > div > div > input,
+#editBatch > div > input {
   font-size: 16px;
   border: 1px solid lightgray;
   width: 80%;
   line-height: 30px;
   background-color: white;
   text-align: center;
+  padding: 4px;
 }
 
+#editBatch > div > input {
+  font-size: 16px;
+  border: 1px solid lightgray;
+  width: 80%;
+  line-height: 30px;
+  background-color: white;
+  text-align: left;
+}
+ 
 #form > div > div:nth-child(1) {
   width: 6%;
 }
