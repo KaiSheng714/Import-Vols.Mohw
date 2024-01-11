@@ -77,8 +77,8 @@ function createRecordHtmlTemplate(record, seqNum) {
       <div name="seqNum">{0}</div>\
       <div name="username">{1}</div>\
       <div name="ssid">{2}</div>\
-      <div><input name="startDate" type="date" value="0111-07-01"/></div>\
-      <div><input name="endDate" type="date" value="0111-12-31" /></div>\
+      <div><input name="startDate" type="date" value="0113-01-01"/></div>\
+      <div><input name="endDate" type="date" value="0113-06-30" /></div>\
       <div><input name="totalHour" type="text" pattern="\d*" maxlength="2" onblur="hideIfFilled(this)"/></div>\
     </div>';
 
@@ -88,9 +88,11 @@ function createRecordHtmlTemplate(record, seqNum) {
 }
 
 function hideIfFilled(inputElement) {
+  let row = inputElement.parentElement.parentElement;
   if (inputElement.value && !isNaN(inputElement.value)) {
-    inputElement.parentElement.parentElement.style.opacity = "0.3"
+    row.style.opacity = "0.3"
+    parentElement.appendChild(row);
   } else {
-    inputElement.parentElement.parentElement.style.opacity = "1"
+    row.style.opacity = "1"
   }
 }
