@@ -89,9 +89,10 @@ function createRecordHtmlTemplate(record, seqNum) {
 
 function hideIfFilled(inputElement) {
   let row = inputElement.parentElement.parentElement;
+  let table = row.parentElement;
   if (inputElement.value && !isNaN(inputElement.value)) {
     row.style.opacity = "0.3"
-    parentElement.appendChild(row);
+    table.appendChild(row);
   } else {
     row.style.opacity = "1"
   }
