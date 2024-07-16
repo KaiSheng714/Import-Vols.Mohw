@@ -5,6 +5,17 @@ window.onload = (e) => {
   }, false);
 }
 
+window.addEventListener('beforeunload', function (e) {
+    // 自定义的提示信息
+    var confirmationMessage = '您确定要离开此页面吗？未保存的数据可能会丢失。';
+
+    // 现代浏览器要求设置returnValue属性
+    (e || window.event).returnValue = confirmationMessage;
+
+    // 对于大多数浏览器
+    return confirmationMessage;
+});
+
 function appendForm(records) {
   records.sort((a, b) => {
     return a.username.localeCompare(b.username)
