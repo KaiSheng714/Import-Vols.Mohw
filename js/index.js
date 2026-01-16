@@ -88,8 +88,8 @@ function createRecordHtmlTemplate(record, seqNum) {
       <div name="seqNum">{0}</div>\
       <div name="username">{1}</div>\
       <div name="ssid">{2}</div>\
-      <div><input name="startDate" type="date" value="0113-01-01"/></div>\
-      <div><input name="endDate" type="date" value="0113-06-30" /></div>\
+      <div><input name="startDate" type="date" value="0115-01-01"/></div>\
+      <div><input name="endDate" type="date" value="0115-06-30" /></div>\
       <div><input name="totalHour" type="text" pattern="\d*" maxlength="2" onblur="hideIfFilled(this)"/></div>\
     </div>';
 
