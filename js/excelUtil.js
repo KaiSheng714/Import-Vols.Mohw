@@ -21,8 +21,8 @@ class ExcelUtil {
       workbook.SheetNames.forEach((sheetName) => {
         XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]).forEach((data, index) => {
           if (index >= DATA_ROW_START_INDEX) {
-            let username = data.__EMPTY_1;
-            let ssid = data.__EMPTY_3;
+            let username = data.__EMPTY_2;
+            let ssid = data.__EMPTY_4;
             if (username && ssid) {
               result.push({
                 username,
